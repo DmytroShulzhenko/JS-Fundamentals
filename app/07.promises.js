@@ -3,18 +3,36 @@ console.log('Topic: Promises');
 // Создайте промис, который постоянно находится в состоянии pending.
 // В конструкторе промиса выведите в консоль сообщение "Promise is created".
 
+const p1 = new Promise(() => {
+	// console.log('Promise is created');
+});
+
+// console.log(p1);
 
 // Task 02
 // Создайте промис, который после создания сразу же переходит в состояние resolve
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
 
+const p2 = Promise.resolve('Promise Data');
+
+// console.log(p2);
+
+// p2.then(console.log);
+// or
+// p2.then((data) => console.log(data));
 
 // Task 03
 // Создайте промис, который после создания сразу же переходит в состояние rejected
 // и возвращает строку 'Promise Error'
 // Получите данные промиса и выведите их в консоль
 
+const p3 = Promise.reject('Promise Error');
+
+// console.log(p3);
+// p3.catch(console.log)
+// or
+// p3.catch((data) => console.log(data));
 
 // Task 04
 // Создайте промис, который переходит в состояние resolved через 3с.
@@ -22,6 +40,14 @@ console.log('Topic: Promises');
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
 
+const p4 = new Promise(resolve => {
+	setTimeout(() => {
+		resolve('Promise Data');
+	}, 3000)
+});
+
+// console.log(p4);
+// p4.then(console.log);
 
 // Task 05
 // Создайте литерал объекта handlePromise со следующими свойствами:
@@ -37,6 +63,40 @@ console.log('Topic: Promises');
 // resolve и reject. Следующие два обработчика запускают методы resolve и reject.
 
 
+const handlePromise = {
+	promise: null,
+	resolve: null,
+	reject: null,
+	onSuccess(data) {
+		console.log(`Promise is resolved with data: ${data}`);
+
+		return data;
+	},
+	onError(err) {
+		console.log(`Promise is rejected with error: ${err}`);
+	}
+}
+
+document.querySelector('#btn-create-promise').addEventListener('click', () => {
+	console.log('Begin');
+
+	handlePromise.promise = new Promise((resolve, reject) => {
+		handlePromise.resolve = resolve;
+		handlePromise.reject = reject;
+	})
+		.then(handlePromise.onSuccess)
+		.then(handlePromise.onSuccess)
+		.catch(handlePromise.onError);
+});
+
+document.querySelector('#btn-resolve-promise').addEventListener('click', () => {
+	handlePromise.resolve?.('Some Data');
+});
+
+document.querySelector('#btn-reject-promise').addEventListener('click', () => {
+	handlePromise.reject?.('Some Error');
+});
+
 // Task 06
 // Используйте предыдущее задание. Продублируйте строчку с методом then
 
@@ -48,6 +108,31 @@ console.log('Topic: Promises');
 // Создайте функцию print, которая выводит в консоль значение своего параметра
 // Добавьте два метода then и зарегистрируйте созданные функции.
 
+const p7 = new Promise(resolve => {
+	setTimeout(() => {
+		resolve('My name is');
+	}, 1000)
+});
+
+function onSuccess(s) {
+	throw new Error('Exception');
+
+	return `${s} Dmytro`;
+}
+
+function print(s) {
+	console.log(s);
+}
+
+function onError(s) {
+	console.log(s);
+
+	return '!';
+}
+
+// p7.then(onSuccess).then(print).catch(console.log);
+// p7.then(onSuccess).catch(console.log).then(print);
+// p7.then(onSuccess).catch(onError).then(print);
 
 // Task 08
 // Используйте предыдущий код. Добавьте в функцию onSuccess генерацию исключения
@@ -61,6 +146,16 @@ console.log('Topic: Promises');
 // Объявите объект со свойтвом name и значением Anna.
 // Создайте врапер для этого объекта и вызовите для него функцию getPromiseData
 
+function getPromiseData(p) {
+	p.then?.(console.log);
+}
+
+const person = {
+	name: "Anna"
+};
+
+// getPromiseData(Promise.resolve(person));
+// getPromiseData(person);
 
 // Task 10
 // Создайте два промиса. Первый промис возвращает объект { name: "Anna" } через 2с,
@@ -68,12 +163,34 @@ console.log('Topic: Promises');
 // Получите результаты работы двух промисов, объедините свойства объектов
 // и выведите в консоль
 
+const p10_1 = new Promise(resolve => {
+	setTimeout(() => {
+		resolve({ name: "Anna" });
+	}, 2000);
+});
+const p10_2 = new Promise((resolve, reject) => {
+	setTimeout(() => {
+		// resolve({ age: 16 });
+		reject('Promise Error');
+	}, 2000);
+});
+
+const p10 = Promise.all([p10_1, p10_2]);
+
+// p10.then(console.log);
+
+// p10.then(([val1, val2]) => {
+// 	console.log({...val1, ...val2});
+// });
 
 // Task 11
 // Используйте предыдущее задание. Пусть теперь второй промис переходит в
 // состояние rejected со значением "Promise Error". Измените код, чтобы обработать
 // эту ситуацию.
 
+// p10.then(([val1, val2]) => {
+// 	console.log({...val1, ...val2});
+// }).catch(console.log);
 
 // Task 12
 // Создайте промис, который перейдет в состояние resolve через 5с и вернет строку
@@ -82,14 +199,50 @@ console.log('Topic: Promises');
 // кнопку "Cancel Promise". Добавьте обработчик для кнопки.
 // Используя метод race организуйте "отмену промиса".
 
+const p12_1 = new Promise(resolve => {
+	setTimeout(() => {
+		resolve('Promise Data');
+	}, 5000);
+});
+
+let rej;
+const p12_2 = new Promise((resolve, reject) => {
+	rej = reject;
+});
+
+document.querySelector('#btn-cancel-promise').addEventListener('click', () => {
+	rej('Cancel Promise');
+});
+
+Promise.race([p12_1, p12_2])
+	.then(console.log)
+	.catch(console.log);
+
 // Task 13
 // Создайте два промиса. Первый промис возвращает объект { name: "Anna" } через 2с,
 // Второй промис переходит в состояние rejected со значением "Promise Error".
 // Запустите оба эти промисы в параллель и получите результаты тех, которые завершаться успешно
 
+const p13 = Promise.allSettled([p10_1, p10_2]);
 
+// p13.then((values) => {
+// 	console.log(values);
+// }).catch(console.log);
 
 // Task 14
 // Создайте два промиса. Первый промис возвращает объект { name: "Anna" } через 2с,
 // Второй промис возвращает дефолтный объект { name: "Unknown" } через 1с.
 // Запустите оба эти промисы в параллель и получите результат того, который отработает первым
+
+const p14_1 = new Promise(resolve => {
+	setTimeout(() => {
+		resolve( { name: "Anna" });
+	}, 2000);
+});
+const p14_2 = new Promise(resolve => {
+	setTimeout(() => {
+		resolve( { name: "Unknown" });
+	}, 1000);
+});
+
+const p14 = Promise.any([p14_1, p14_2]).then(console.log);
