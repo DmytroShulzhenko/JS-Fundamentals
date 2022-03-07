@@ -10,6 +10,13 @@ console.log('Topic: Arrays');
 //     2.    with deleting this element from an array.
 //     Display them in the console.
 
+// const arr_1 = [1, 2, 3, 4, 5];
+// const lastEl_1 = arr_1[arr_1.length - 1];
+// const lastEl_2 = arr_1.pop();
+//
+// console.log(lastEl_1);
+// console.log(lastEl_2);
+
 // Task 02
 // RU: Создать массив любых элементов. Добавить элемент в конец массива.
 //     1. Модифицировать текущий массив
@@ -19,6 +26,14 @@ console.log('Topic: Arrays');
 //     1. mutate current array;
 //     2. create a new array.
 //     Disply them in the conole.
+
+// const arr_2 = [1, 2, 3, 4, 5];
+//
+// arr_2.push(6);
+//
+// const arr_2_1 = [...arr_2, 7];
+//
+// console.log(arr_2_1);
 
 // Task 03
 // RU: Создать массив любых элементов. Вставить новый элемент под индексом 3.
@@ -30,8 +45,16 @@ console.log('Topic: Arrays');
 //     2. create a new array.
 //     Disply them in the conole.
 
-
-
+// const index_3 = 3;
+//
+// const arr_3 = [1, 2, 3, 4, 5];
+// arr_3.splice(index_3, 0, 8);
+//
+// console.log(arr_3);
+//
+// const arr_3_1 = [...arr_3.slice(0, index_3), 10, ...arr_3.slice(index_3, arr_3.length)];
+//
+// console.log(arr_3_1);
 
 // Task 04
 // RU: Создать массив любых элементов.
@@ -39,17 +62,34 @@ console.log('Topic: Arrays');
 // EN: Create an array of any elements.
 //     Iterate over this array and display each element in the console.
 
+// const arr_4 = [1, 2, 3, 4, 5];
+//
+// for (const item of arr_4) {
+// 	console.log(item);
+// }
+
 // Task 05
 // RU: Создать массив чисел в диапазоне от 0 до 100.
 //     Подсчитать и вывети сумму тех элементов, которые больше 50.
 // EN: Create an array of numbers in the range from 0 to 100.
 //     Calculate and display the sum of the elements, which are greater than 50.
 
+// const arr_5 = [1, 20, 8, 35, 44, 5, 82, 15, 51, 95, 11, 73];
+//
+// const sum_5 = arr_5.filter(item => item > 50).reduce((acc, value) => acc + value, 0);
+//
+// console.log(sum_5);
+
 // Task 06
 // RU: Создать массив строк. На основе этого массива создать строку –
 //     объдинить все элементы массива, используя определенный разделитель.
 // EN: Create an array of strings. Create a string on the basis of this array.
 //     This string should contain all elements from an array separated by certain delimeter.
+
+// const arr_6 = ['This', 'string', 'should', 'contain', 'all', 'elements', '!' ]
+// const str_6 = arr_6.join(' ');
+//
+// console.log(str_6);
 
 // Task 07
 // RU: Создать массив чисел от 1 до 20 в случайном порядке.
@@ -59,17 +99,29 @@ console.log('Topic: Arrays');
 //     Sort this array in ascending order. Display it in the console.
 //     Create a copy of the previous array in reverse order. Disply it in the console.
 
+// const arr_7 = [1, 15, 6, 5, 6, 18, 7, 11, 3, 20];
+//
+// console.log(arr_7.sort((a, b) => a - b));
+// console.log(arr_7.sort((a, b) => a - b).reverse());
+// console.log(arr_7.sort((a, b) => b - a));
+
 // Task 08
-// RU: Создать массив [3, 0, -1, 12, -2, -4, 100_001 0, 7, 2]
+// RU: Создать массив [3, 0, -1, 12, -2, -4, 100_001, 0, 7, 2]
 //     На его основе создать новый массив [-1, -2, -4, 0, 0, 3, 12, 100_001, 7, 2].
 //     первая часть - отрицательные числа в том же порядке
 //     вторая часть - нули
 //     третья часть - положительные числа в том же порядке.
-// EN: Create the array: [3, 0, -1, 12, -2, -4, 100_001 0, 7, 2]
+// EN: Create the array: [3, 0, -1, 12, -2, -4, 100_001, 0, 7, 2]
 //     Use this array and create new one: [-1, -2, -4, 0, 0, 3, 12, 100_001, 7, 2].
 //     First part - negative values from the original array in the same order,
 //     Next part - zeroes
 //     Last part - positive values from the original array in the same order.
+
+// const arr_8 = [3, 0, -1, 12, -2, -4, 100_001, 0, 7, 2];
+// const arr_8_1 = [...arr_8.filter(item => item < 0), ...arr_8.filter(item => item === 0), ...arr_8.filter(item => item > 0)];
+//
+// console.log(arr_8);
+// console.log(arr_8_1);
 
 // Task 09
 // RU: 1. Создайте массив styles с элементами "Jazz", "Blues".
@@ -85,17 +137,41 @@ console.log('Topic: Arrays');
 //     5. Add two new elements "Rap" and "Reggae" at the begining of the array.
 //     6. Display an array in the console.
 
+// const styles = ["Jazz", "Blues"];
+//
+// styles.push("Rock-n-Roll");
+// styles.splice(-2, 1, "Classics");
+// // or
+// // styles[styles.length - 2] = "Classics";
+// styles.unshift("Rap", "Reggae");
+//
+// console.log(styles);
+
 // Task 10
 // RU: Подсчитать в строке "dskjdhfkjshdfkjhsdkjureyteiruyiqywehjkh"
 //     отдельно количество букв r, k, t и вывести в консоль.
 // EN: Calculate the number of letters r, k, t in this string
 //     "dskjdhfkjshdfkjhsdkjureyteiruyiqywehjkh" and display them in the console.
 
+// const str_10 = 'dskjdhfkjshdfkjhsdkjureyteiruyiqywehjkh';
+// const count_r = str_10.split('r').length - 1;
+// const count_k = str_10.split('k').length - 1;
+// const count_t = str_10.split('t').length - 1;
+//
+// console.log(count_r);
+// console.log(count_k);
+// console.log(count_t);
+
 // Task 11
 // RU: Создать массив любых элементов.
 //     Получить случайный элемент из массива и вывести его в консоль.
 // EN: Create an array of any elements.
 //     Get the random element from this array and display it in the console.
+
+// const arr_11 = [1, 15, 6, 5, 6, 18, 7, 11, 3, 20];
+// const randomEl = arr_11[Math.floor(Math.random() * arr_11.length)];
+//
+// console.log(randomEl);
 
 // Task 12
 // RU: Создать двумерный массив:
@@ -109,11 +185,23 @@ console.log('Topic: Arrays');
 //     7 8 9
 //     Display it in the console.
 
+// const arr_12 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+//
+// for (const item of arr_12) {
+// 	console.log(item.join(' '));
+// }
+
 // Task 13
 // RU: Преобразовать массив из предыдущего задания в одномерный.
 //     Вывести его в консоль
 // EN: Transform an array from the previous task into one-dementional array.
 //     Display it in the console.
+
+// const arr_13 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+//
+// console.log(arr_13.flat());
+// or
+// console.log(arr_13.flat(Infinity));
 
 // Task 14
 // RU: Создать массив любых элементов.
@@ -125,11 +213,27 @@ console.log('Topic: Arrays');
 //     contain elements from index a to index b.
 //     Display it in the console.
 
+// const arr_14 = [1, 15, 6, 5, 6, 18, 7, 11, 3, 20];
+// const a = 2;
+// const b = 5;
+// const arr_14_1 = arr_14.slice(a, b + 1);
+//
+// console.log(arr_14_1);
+
 // Task 15
 // RU: Создать массив любых элементов.
 //     Найти индекс указаного элемента в массиве и вывести его в консоль.
 // EN: Create an array of any elements.
 //     Find the index of a particular element in the array and display it in the console.
+
+// const arr_15 = [1, 15, 6, 5, 6, 18, 7, 11, 3, 20];
+// const findElement = 18;
+// const index_15 = arr_15.findIndex(value => value === findElement);
+// // or
+// const index_15_1 = arr_15.indexOf(findElement);
+//
+// console.log(index_15);
+// console.log(index_15_1);
 
 // Task 16
 // RU: Создать массив с дублями элементов. На его основе создать новый массив
@@ -139,6 +243,11 @@ console.log('Topic: Arrays');
 //     Remove duplicated elements.
 //     Display it in the console.
 
+// const arr_16 = [1, 15, 6, 5, 6, 18, 7, 11, 3, 20, 6, 15, 7];
+// const arr_16_1 = [...new Set(arr_16)];
+//
+// console.log(arr_16_1);
+
 // Task 17
 // RU: Создать массив с дублями. Найти первый элемент, который дублируется.
 //     Заменить этот элемент и все его копии на символ '*'.
@@ -146,6 +255,22 @@ console.log('Topic: Arrays');
 // EN: Create an array with duplicate elements. Find first duplicated element.
 //     Replace this element and all its copies with symbol '*'.
 //     Display it in the console.
+
+// const arr_17 = [1, 15, 6, 5, 6, 18, 7, 11, 3, 20, 6, 15, 7];
+//
+// for (const value of arr_17) {
+// 	if (arr_17.indexOf(value) !== arr_17.lastIndexOf(value)) {
+// 		arr_17.forEach((el, index, arr) => {
+// 			if (el === value) {
+// 				arr[index] = '*'
+// 			}
+// 		})
+//
+// 		break;
+// 	}
+// }
+//
+// console.log(arr_17);
 
 // Task 18
 // RU: Создать массив целых чисел. На его основе создать массивы – представления
@@ -157,6 +282,15 @@ console.log('Topic: Arrays');
 //     Third array contains the hexadecimal representation of the elements from the original array.
 //     Display them in the console.
 
+// const arr_18 = [1, 15, 6, 5, 6, 18, 7, 110, 3, 20, 6, 15, 7];
+// const arr_18_2 = arr_18.map(el => `0b${el.toString(2)}`);
+// const arr_18_8 = arr_18.map(el => `0o${el.toString(8)}`);
+// const arr_18_16 = arr_18.map(el => `0x${el.toString(16)}`);
+//
+// console.log(arr_18_2);
+// console.log(arr_18_8);
+// console.log(arr_18_16);
+
 // Task 19
 // RU: Получить из строки 'a big brown fox jumps over the lazy dog' массив слов,
 //     который содержит элементы, длина которых не больше 3 символа.
@@ -165,6 +299,11 @@ console.log('Topic: Arrays');
 //     This array should contain only words, the length of which is 3 or less characters.
 //     Display it in the console.
 
+// const str_19 = 'a big brown fox jumps over the lazy dog';
+// const arr_19 = str_19.split(' ').filter(el => el.length < 4);
+//
+// console.log(arr_19);
+
 // Task 20
 // RU: Создать массив, который содержит строки и числа.
 //     Проверить, содержит ли массив только строки.
@@ -172,6 +311,11 @@ console.log('Topic: Arrays');
 // EN: Create an array of numbers and strings.
 //     Check whether this array contains only strings.
 //     Display the result in the console.
+
+// const arr_20 = ['big', 'dog', 1, 2];
+// const result = arr_20.every(el => typeof el === 'String');
+//
+// console.log(result);
 
 // Task 21
 // RU: Создать отсортированный массив чисел.
@@ -185,3 +329,188 @@ console.log('Topic: Arrays');
 //     Function should use binary search.
 //     Display the result in the console.
 
+// const arr_21 = [1, 3, 45, 67, 89, 102, 345];
+//
+// function binarySearch(arr, value) {
+// 	let leftIndex = 0;
+// 	let rightIndex = arr.length - 1;
+// 	let midIndex;
+//
+// 	if (value < arr[leftIndex] || value > arr[rightIndex]) {
+// 		return -1;
+// 	}
+//
+// 	while (leftIndex <= rightIndex) {
+// 		midIndex = Math.floor((leftIndex + rightIndex) / 2);
+//
+// 		if (value === arr[midIndex]) {
+// 			return midIndex;
+// 		} else if (value < arr[midIndex]) {
+// 			rightIndex = midIndex - 1;
+// 		} else if (value > arr[midIndex]) {
+// 			leftIndex = midIndex + 1;
+// 		}
+// 	}
+//
+// 	return -1;
+// }
+//
+// console.log(binarySearch(arr_21, 4));
+// console.log(binarySearch(arr_21, 3));
+// console.log(binarySearch(arr_21, 1));
+// console.log(binarySearch(arr_21, 345));
+// console.log(binarySearch(arr_21, 102));
+// console.log(binarySearch(arr_21, 103));
+//
+//
+//
+//
+// const arr_22 = [1, 3, 45, 67, 89, 102, 345];
+// arr_22.copyWithin(0,3, 6);
+// console.log(arr_22);
+
+
+
+// Task 1
+// const entries = ['a', 1, true];
+// console.log(entries instanceof Array);
+// Answer: true
+
+// 	Task 2
+// const entries = ['a', 'b', 'c'];
+// console.log(typeof entries);
+// Answer: object
+//
+// 	Task 3
+// const entries = [];
+// console.log(entries.length);
+// Answer: 0
+//
+// 	Task 4
+// const entries = ['a', 'b', 'c'];
+// entries[entries.length] = 'd';
+// console.log(entries.length);
+// Answer: 4
+//
+// 	Task 5
+// const entries = [];
+// entries.push('a');
+// entries.push('b', 'c');
+// entries.pop();
+// console.log(entries.length);
+// Answer: 2
+//
+// 	Task 6
+// const entries = ['a', 'b', 'c'];
+// const newEntries = entries.concat(['d', 'e', 'f'], 'g', 'h');
+// console.log(newEntries.length);
+// Answer: 8
+//
+// 	Task 7
+// const entries = ['a', 'b', 'c', 'd'];
+// const r = entries.splice(2, 0, 'A', 'B', 'C');
+// console.log(entries.toString());
+// console.log(r);
+// Answer: a,b,A,B,C,c,d
+//					[]
+//
+// 	Task 8
+// const ratings = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+// console.log(ratings.indexOf('3'));
+// Answer: -1
+//
+// 	Task 9
+// const entries = ['a', 'b', 'c', 'd'];
+// entries.forEach(
+// 	function(element, index) {
+// 		if (index === 1) return;
+// 		console.log(element.toUpperCase());
+// 	});
+// Answer: A
+// 					C
+// 					D
+
+//
+// 	Task 10
+// const entries = ['a', 'b', 'c', 'd', 'ef'];
+// const result = entries.some(e => e.length === 2);
+// console.log(result);
+// Answer: true
+//
+// 	Task 11
+// const priority = [1, 2, 3];
+// const priority100 = Array.from(
+// 	priority,
+// 	p => p*10 + this.adjustment,
+// 	{ adjustment: 100 }
+// );
+// console.log(priority100);
+// Answer: [NaN, NaN, NaN]
+//
+// 	Task 12
+// const a = Array(2).fill({ });
+// console.log(a[0] === a[1]);
+// Answer: true
+//
+// 	Task 13
+// const priority = ["High", "Normal", "Low"];
+// for (let p of priority) {
+// 	console.log(p);
+// }
+// Answer: High
+				// Normal
+				// Low
+//
+// 	Task 14
+// const nums = [ 1, 2, [ 3, 4 ], [ [ 5, 6 ] ] ];
+// console.log(nums.flat(0));
+// // Answer: [ 1, 2, [ 3, 4 ], [ [ 5, 6 ] ] ]
+//
+// 	Task 15
+// const estHours = [8, 20, 16];
+// const newEstHours = [...estHours, 40];
+// console.log(newEstHours);
+// Answer: [8, 20, 16, 40]
+//
+// 	Task 16
+// const priority = ['Low', 'Normal', 'High'];
+// const [low, , high] = priority;
+// console.log(high);
+// Answer: High
+//
+// 	Task 17
+// let count = 0;
+// for (const [a, b] of [[5, 10]]) {
+// 	console.log(`${a} ${b}`);
+// 	count++;
+// }
+// console.log(count);
+// Answer: 5 10
+// 1
+
+//
+// 	Task 18
+// const priority = new Set([
+// 	"High",
+// "Low"
+// ]);
+// for (const value of priority) {
+// 	console.log(`s[${value}] = ${value}`);
+// }
+// Answer: s[High] = High
+//         s[Low] = Low
+//
+// 	Task 19
+// const task1 = { action: "Create…" };
+// const task2 = { action: "Delete…" };
+// const project = new WeakSet([task1, task2]);
+// console.log(project.size);
+// Answer: underfined
+//
+// 	Task 20
+// const task1 = { action: "Create…"  };
+// const task2 = { action: "Delete…" };
+// const project = new WeakSet([task1, task2]);
+// project.delete(task1);
+// console.log(project.has(task1));
+// Answer: false
