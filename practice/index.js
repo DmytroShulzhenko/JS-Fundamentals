@@ -1,0 +1,1 @@
+import * as array from './arrays';

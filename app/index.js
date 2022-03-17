@@ -9,3 +9,7 @@
 // import * as o09 from './09.iterators';
 // import * as o10 from './10.sync-generators';
 // import * as o11 from './11.dom';
+
+import * as test from '../tests';
+
+// import * as practice from '../practice';
