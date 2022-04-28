@@ -9,6 +9,15 @@ console.log('Topic: Async Functions');
 //     Display the result of function in the console.
 //     Process a promise and display value in the console.
 
+async function f1(a, b) {
+    return a + b;
+}
+
+const r1 = f1(1, 2);
+
+// console.log(r1);
+// r1.then(console.log);
+
 // Task 02
 // RU: Создайте асинхронную функцию f2, используя FDE (Function Definition Expression).
 //     Функция должна возвращать 'Promise Data', используя Promise.resolve()
@@ -19,6 +28,15 @@ console.log('Topic: Async Functions');
 //     Display the result of function in the console.
 //     Process a promise and display value in the console.
 
+const f2 = async function() {
+    return Promise.resolve('Promise Data');
+}
+
+const r2 = f2();
+
+// console.log(r2);
+// r2.then(console.log);
+
 // Task 03
 // RU: Создайте класс C1. Добавьте асинхронный метод f3.
 //     Метод должен генерить исключение 'Error occurs in f3 method'.
@@ -28,6 +46,18 @@ console.log('Topic: Async Functions');
 //     Method should throw an exception 'Error occurs in f3 method'.
 //     Create an instance of the class and call the method f3.
 //     Process a promise and display value in the console.
+
+class C1 {
+    async f3() {
+        throw new Error('Error occurs in f3 method');
+    }
+}
+
+const c1 = new C1();
+
+// c1.f3().catch(console.log);
+//
+// console.log(1);
 
 // Task 04
 // RU: Cоздайте функцию makeRequest, используя FDS (Function Declaration Statement).
@@ -43,11 +73,35 @@ console.log('Topic: Async Functions');
 //     Create a function f4 as a Function Declaration Statement.
 //     The function f4 should call the function makeRequest, get its result and display it in the console.
 
+function makeRequest(url) {
+    console.log('makeRequest is called');
+
+    return new Promise(resolve => {
+        setTimeout(resolve, 2000, url);
+    })
+}
+
+function f4() {
+    const result = makeRequest('https://somedomain.com');
+
+    console.log(result);
+}
+
+// f4();
+
 // Task 05
 // RU: Внесите изменения в функцию f4 из предыдущего задания так, чтобы в консоле появилось
 //     значение переданого параметра в функцию makeRequest.
 // EN: Make changes to the function f4 from the previous task. This function should display the value
 //     of the parameter of the function makeRequest in the console.
+
+async function f4_5() {
+    const result = await makeRequest('https://somedomain.com');
+
+    console.log(result);
+}
+
+// f4_5();
 
 // Task 06
 // RU: Cоздайте асинхронную функцию f6, используя FDS (Function Declaration Statement).
@@ -63,11 +117,38 @@ console.log('Topic: Async Functions');
 //     parameter of the function makeRequest.
 //     Process the result of the function f6.
 
+async function f6() {
+    let result = [];
+
+    console.log('Message 1');
+    result.push(await makeRequest('https://a.com'));
+
+    console.log('Message 2');
+    result.push(await makeRequest('https://b.com'));
+
+    console.log('Message 3')
+    console.log(result);
+
+    return result;
+}
+
+// f6();
+
+// const r6 = f6();
+// r6.then(console.log);
+
 // Task 07
 // RU: Измените асинхронную функцию f6 из предыдущего задания так, чтобы вызовы функции
 //     makeRequest выполнялись паралельно.
 // EN: Make changes to the async function f6 from the previous task. This function should 
 //     call the function makeRequest with different values of its parameter simultaneously.
+
+async function f7() {
+    return Promise.all([makeRequest('https://a.com'), makeRequest('https://b.com')]);
+}
+
+// const r7 = f7();
+// r7.then(console.log);
 
 // Task 08
 // RU: Создайте масив урлов ['http://a', 'http://b'].
@@ -86,3 +167,31 @@ console.log('Topic: Async Functions');
 //     Create the async function f8, which should call the function sendRequest with each value 
 //     from the array and return the object {name: 'Ann', age: 16}.
 //     Process the reuslt of the function f8
+
+const urls = ['http://a', 'http://b'];
+
+const map = new Map([
+    ['http://a', {name: 'Ann'}],
+    ['http://b', {age: 16}],
+]);
+
+function sendRequest(url) {
+    console.log('sendRequest is called');
+
+    const value = map.get(url);
+
+    return new Promise(resolve => {
+        setTimeout(resolve, 2000, value);
+    });
+}
+
+async function f8(urls) {
+    const arrOfPromises = urls.map(url => sendRequest(url));
+    const promise = Promise.all(arrOfPromises);
+    const arr = await Promise.all(arrOfPromises);
+
+    console.log(promise);
+    console.log(arr);
+}
+
+// f8(urls);
