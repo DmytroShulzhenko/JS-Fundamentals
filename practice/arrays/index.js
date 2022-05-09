@@ -1,3 +1,5 @@
+console.log('Practice: Arrays');
+
 // Task 1
 const VALID_STATES = new Set(['SUCCESS', 'FINAL', 'DONE']);
 
@@ -9,7 +11,7 @@ const people = [
 
 const peopleWithValidationState = people.filter(person => VALID_STATES.has(person.status)).map(person => person.name);
 
-console.log(peopleWithValidationState);
+// console.log(peopleWithValidationState);
 
 // Task 2
 const meetups = [
@@ -21,4 +23,4 @@ const meetups = [
 
 const membersOnActiveMeetups = meetups => meetups.filter(meetup => meetup.isActive).reduce((sum, meetup) => sum + meetup.members, 0);
 
-console.log(membersOnActiveMeetups(meetups));
+// console.log(membersOnActiveMeetups(meetups));

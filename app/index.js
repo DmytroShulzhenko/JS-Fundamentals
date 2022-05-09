@@ -12,4 +12,4 @@
 
 import * as test from '../tests';
 
-// import * as practice from '../practice';
+import * as practice from '../practice';
